@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=hachim
+      - POSTGRES_DB=myplatform
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: hachim@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: hachim
+      PGADMIN_LISTEN_PORT: 8001
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+
+  mail-dev:
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025

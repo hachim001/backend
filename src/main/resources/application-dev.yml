@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myplatform
+    username: postgres
+    password: hachim
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: localhost
+    port: 1025
+    username: hachim
+    password: hachim
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimout: 5000
+        timeout: 3000
+        writetimeout: 5000
+application:
+  security:
+    jwt:
+      secret-key: CRcYGAUuADWI44cPVzkCOjfh66D7uM5D
+      expiration: 9654127
+
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+
+admin:
+
+  password: hachim@dija24
+
+server:
+  port: 8088
+
